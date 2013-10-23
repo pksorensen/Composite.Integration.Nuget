@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<packages>
+  <package id="jquery">
+    <path from="scripts" to="~/Frontend/Scripts/libs/jquery" />
+  </package>
+  <package id="knockoutjs">
+    <path from="scripts" to="~/Frontend/Scripts/libs/knockout" />
+  </package>
+</packages>

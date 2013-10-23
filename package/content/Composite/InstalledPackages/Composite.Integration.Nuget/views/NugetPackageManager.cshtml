@@ -1,0 +1,20 @@
+﻿@{
+    Page.Title = "Title goes here";
+    Layout = "/Composite/controls/razor/RazorLayout.cshtml";
+}
+
+@{
+    var pm = new Composite.Integration.Nuget.PackageManager.CompositePackageManager();
+   // pm.InstallPackage("jQuery");
+}
+<ui:page label="Nuget Package Manager">
+    
+            <ui:scrollbox class="padded" forcefitness="true">
+                
+            </ui:scrollbox>
+        <div>
+           <ui:datainput value=">> " type="string" error="Alarm!" />
+        </div>
+       
+        
+</ui:page>

@@ -1,0 +1,44 @@
+<?xml version="1.0" standalone="yes"?>
+<mi:PackageInstaller xmlns:mi="http://www.composite.net/ns/management/packageinstaller/1.0">
+	<mi:PackageRequirements minimumCompositeVersion="4.1.5028.20670" maximumCompositeVersion="9.9999.9999.9999" />
+	<mi:PackageInformation name="Composite.Integration.Nuget" 
+                         groupName="Composite.Integration" 
+                         version="1.0.0" 
+                         author="Poul K. Sørensen" 
+                         website="http://www.s-innovations.net" 
+                         readMoreUrl="http://www.s-innovations.net" 
+                         id="31acb36d-401d-4eb2-93cc-dd20dc7382ff" 
+                         canBeUninstalled="true" 
+                         systemLocking="hard" flushOnCompletion="true">
+		<TechnicalDetails>http://www.s-innovations.net</TechnicalDetails>
+		<Description>http://www.s-innovations.net</Description>
+	</mi:PackageInformation>
+  <mi:PackageFragmentInstallerBinaries >
+    <mi:Add path="~\lib\net45\Composite.Integration.Nuget.dll"/>
+    <mi:Add path="~\lib\net45\NuGet.Core.dll"/>
+  </mi:PackageFragmentInstallerBinaries>
+	<mi:PackageFragmentInstallers>
+
+            
+		<mi:Add installerType="Composite.Core.PackageSystem.PackageFragmentInstallers.ConfigurationTransformationPackageFragmentInstaller, Composite" 
+            uninstallerType="Composite.Core.PackageSystem.PackageFragmentInstallers.ConfigurationTransformationPackageFragmentUninstaller, Composite">
+			<Install xsltFilePath="~\Composite.config\Install.xsl" />
+			<Uninstall xsltFilePath="~\Composite.config\Uninstall.xsl" />
+		</mi:Add>
+		<mi:Add installerType="Composite.Core.PackageSystem.PackageFragmentInstallers.FilePackageFragmentInstaller, Composite" uninstallerType="Composite.Core.PackageSystem.PackageFragmentInstallers.FilePackageFragmentUninstaller, Composite">
+      <Directories>
+        <Directory sourceDirectory="~\content\Composite\InstalledPackages\Composite.Integration.Nuget\" targetDirectory="~\Composite\InstalledPackages\Composite.Integration.Nuget\" allowOverwrite="true" deleteTargetDirectory="false" />
+      </Directories>
+      <Files>
+        <File sourceFilename="~\content\App_Data\Nuget\nuget.mapping.rules.xml" targetFilename="~\App_Data\Nuget\nuget.mapping.rules.xml" allowOverwrite="true" />
+
+        <File sourceFilename="~\lib\net45\Composite.Integration.Nuget.dll" targetFilename="~\Bin\Composite.Integration.Nuget.dll" allowOverwrite="true" />
+			</Files>
+		</mi:Add> 
+    <mi:Add installerType="Composite.Integration.Nuget.NugetPackageFragmentInstaller,Composite.Integration.Nuget"
+            uninstallerType="Composite.Integration.Nuget.NugetPackageFragmentUninstaller,Composite.Integration.Nuget" >
+      <nuget id="Composite.Integration.Nuget" version="1.0.0-beta131023" pre="true"></nuget>
+    </mi:Add>
+	</mi:PackageFragmentInstallers>
+  
+</mi:PackageInstaller>

@@ -3,7 +3,7 @@ Composite.Integration.Nuget
 
 This is a Nuget Integration for Composite C1. Its is an early release for testing.
 
-Reference-style: 
+Screendump: 
 ![One look at how it looked in 1.1.2][preview]
 
 

@@ -1,15 +1,15 @@
 <?xml version="1.0" standalone="yes"?>
 <mi:PackageInstaller xmlns:mi="http://www.composite.net/ns/management/packageinstaller/1.0">
-	<mi:PackageRequirements minimumCompositeVersion="4.1.5028.20670" maximumCompositeVersion="9.9999.9999.9999" />
+	<mi:PackageRequirements minimumCompositeVersion="4.0.0.0" maximumCompositeVersion="9.9999.9999.9999" />
 	<mi:PackageInformation name="Composite.Integration.Nuget" 
                          groupName="Composite.Integration" 
-                         version="1.0.0" 
+                         version="1.1.4" 
                          author="Poul K. Sørensen" 
                          website="http://www.s-innovations.net" 
                          readMoreUrl="http://www.s-innovations.net" 
                          id="31acb36d-401d-4eb2-93cc-dd20dc7382ff" 
                          canBeUninstalled="true" 
-                         systemLocking="hard" flushOnCompletion="true">
+                         systemLocking="hard" flushOnCompletion="true" reloadConsoleOnCompletion="true" >
 		<TechnicalDetails>http://www.s-innovations.net</TechnicalDetails>
 		<Description>http://www.s-innovations.net</Description>
 	</mi:PackageInformation>
@@ -37,7 +37,7 @@
 		</mi:Add> 
     <mi:Add installerType="Composite.Integration.Nuget.NugetPackageFragmentInstaller,Composite.Integration.Nuget"
             uninstallerType="Composite.Integration.Nuget.NugetPackageFragmentUninstaller,Composite.Integration.Nuget" >
-      <nuget id="Composite.Integration.Nuget" version="1.1.1" pre="false"></nuget>
+      <nuget id="Composite.Integration.Nuget" version="1.1.3" pre="false"></nuget>
     </mi:Add>
 	</mi:PackageFragmentInstallers>
   

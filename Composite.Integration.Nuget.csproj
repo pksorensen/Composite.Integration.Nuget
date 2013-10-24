@@ -75,6 +75,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="package\content\Composite\InstalledPackages\Composite.Integration.Nuget\views\NugetPackageManager.cshtml" />
+    <None Include="package\nuget.nuspec" />
     <None Include="Release\Composite.Integration.Nuget.zip" />
   </ItemGroup>
   <ItemGroup>
@@ -102,7 +103,7 @@ copy "$(TargetPath)" "$(ProjectDir)Package\lib\net45"
 "$(SolutionDir)..\References\7za.exe" d "$(ProjectDir)Release\$(ProjectName).zip"
 "$(SolutionDir)..\References\7za.exe" a -tzip "$(ProjectDir)Release\$(ProjectName).zip" -r "$(ProjectDir)Package\*" -x!*designer.cs
 del $(ProjectDir)*.nupkg
-nuget pack $(ProjectDir)Package\nuget.nuspec -OutputDirectory $(ProjectDir) -Version 1.1.2</PostBuildEvent>
+nuget pack $(ProjectDir)Package\nuget.nuspec -OutputDirectory $(ProjectDir)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

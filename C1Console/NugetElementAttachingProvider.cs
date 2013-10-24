@@ -147,7 +147,8 @@ namespace Composite.Integration.Nuget.C1Console
                 var Updates = pm.SourceRepository.GetUpdates(locals, false, false).ToList();
                 
                 var CompositeNugetPackages = pm.SourceRepository.GetPackages().Where(p => p.Tags.IndexOf("composite-c1") != -1)
-                    .AsEnumerable().Where(PackageExtensions.IsListed);
+                    .AsEnumerable().Where(PackageExtensions.IsListed).GroupBy(p => p.Id)
+                    .Select(key => key.OrderByDescending(p => p.Version).First());
                 var NotInstalledCompositePackages = CompositeNugetPackages
                     .Where(p => !locals.Any(l => l.Id == p.Id));
 

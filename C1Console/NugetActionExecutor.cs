@@ -37,6 +37,8 @@ namespace Composite.Integration.Nuget.C1Console
             {
                 var pm = new CompositePackageManager();
                 var token = entityToken as NugetPackageEntityToken;
+                IManagementConsoleMessageService managementConsoleMessageService = flowControllerServicesContainer.GetService<IManagementConsoleMessageService>();
+
                 if(token.IsLocalPackage())
                 {
                     try
@@ -45,8 +47,7 @@ namespace Composite.Integration.Nuget.C1Console
                        
                     }catch(InvalidOperationException ex)
                     {
-                       IManagementConsoleMessageService managementConsoleMessageService = flowControllerServicesContainer.GetService<IManagementConsoleMessageService>();
-
+                       
    
                       //  ConsoleMessageQueueFacade.Enqueue(new MessageBoxMessageQueueItem { DialogType = DialogType.Question, Message = ex.Message, Title = "Package Manager" }, managementConsoleMessageService.CurrentConsoleId);
                         ConsoleMessageQueueFacade.Enqueue(new MessageBoxMessageQueueItem { DialogType = DialogType.Error, Message = ex.Message, Title = "Package Manager" }, managementConsoleMessageService.CurrentConsoleId);
@@ -57,8 +58,24 @@ namespace Composite.Integration.Nuget.C1Console
                 }
                 else if(token.IsRemotePackage())
                 {
-                    pm.InstallPackage(token.PackageId, new NuGet.SemanticVersion(token.Version));
-                    ConsoleMessageQueueFacade.Enqueue(new RefreshTreeMessageQueueItem { EntityToken = NugetEntityToken.InstalledEntityToken }, currentConsoleId);
+                    try
+                    {
+
+
+                        pm.InstallPackage(token.PackageId, new NuGet.SemanticVersion(token.Version));
+                    }
+                    catch(Exception ex)
+                    {
+                        ConsoleMessageQueueFacade.Enqueue(new MessageBoxMessageQueueItem { DialogType = DialogType.Error, Message = ex.Message, Title = "Package Manager" }, managementConsoleMessageService.CurrentConsoleId);
+                    
+
+                    }
+                    finally
+                    {
+                        ConsoleMessageQueueFacade.Enqueue(new RefreshTreeMessageQueueItem { EntityToken = NugetEntityToken.InstalledEntityToken }, currentConsoleId);
+                   
+                    }
+                
                 }else if(token.IsUpdatePackage())
                 {
                     pm.UpdatePackage(token.PackageId, true, false);

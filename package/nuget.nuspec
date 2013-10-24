@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Composite.Integration.Nuget</id>
+    <version>1.1.4</version>
+    <authors>Poul Kjeldager Sørensen</authors>
+    <owners>Poul Kjeldager Sørensen</owners>
+    <licenseUrl>http://www.s-innovations.net</licenseUrl>
+    <projectUrl>http://www.s-innovations.net</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package integrates Nuget into Composite C1. Adding support for packages to depend on nuget packages aswell allowing developers to add packages from nuget from the C1 console.</description>
+    <releaseNotes>Added such that mapping file support "{ver}", meaning that packages like bootstrap and jquery will as default behavior go to /Frontend/Script/libs/jquery/{nuget.version}/ and /Frontend/Styles/bootstrap/{nuget.version}/</releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <tags>composite-c1</tags>
+    <dependencies>
+      <dependency id="Nuget.Core" version="2.7.1" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="**" exclude="**\lib\net45\NuGet.Core.dll;**\install.xml;**\Composite.config\*" />
+  </files>
+</package>
